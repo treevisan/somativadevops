@@ -1,4 +1,4 @@
-name: CI
+name: python-app
 
 on:
   pull_request:
