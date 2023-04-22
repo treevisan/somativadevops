@@ -1,9 +1,9 @@
 FROM python:latest
 
-RUN pip install flask
-
 WORKDIR /somativadevops
 
-COPY . /somativadevops
+ADD . /somativadevops
+
+RUN pip install -r requirements.txt
 
 CMD ["python", "app.py"]
