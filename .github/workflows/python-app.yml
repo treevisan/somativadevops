@@ -1,6 +1,9 @@
 name: python-latest
 
 on:
+  push:
+    branches:
+    - main
   pull_request:
     branches:
       - main
@@ -10,11 +13,10 @@ on:
 jobs:
   build-job:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v3
       - run: python3 -V
-      - name: Install Dependencies
-        run: pip3 install flask
       - name: Build
         run: echo "Build ok"
 
@@ -22,6 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
+        - name: Install dependencies
+          run: pip install Flask
         - run: python3 app.py
         - name: Run SAST scan 
           uses: AppThreat/sast-scan-action@v1.0.0
