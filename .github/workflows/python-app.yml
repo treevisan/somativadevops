@@ -24,7 +24,7 @@ jobs:
         - name: Run SAST scan 
         - uses: AppThreat/sast-scan-action@main
           with:
-            scan-type: 'snyk'
+            scan-type: 
             snyk-token: ${{ secrets.TOKEN_IN }}
 
   deploy-job:
