@@ -1,4 +1,4 @@
-name: python-app
+name: python-
 
 on:
   pull_request:
