@@ -21,9 +21,11 @@ jobs:
     steps:
         - uses: actions/checkout@v3
         - run: python3 app.py
+        - name: Run SAST scan 
         - uses: AppThreat/sast-scan-action@main
           with:
-            type: "python"
+            scan-type: "snyk"
+            snyk token: 
 
   deploy-job:
       needs: test-job
