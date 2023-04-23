@@ -54,4 +54,4 @@
             curl -X POST -H 'Content-type: application/json' \
               --data '{"content":"Nova imagem Docker publicada!"}' \
               $WEBHOOK_DISCORD
-    
+  
