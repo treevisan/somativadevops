@@ -49,9 +49,11 @@
         - name: Envio notificação
           if: github.event_name == 'pull_request' || github.event_name == 'push'
           env:
-            export DISCORD_WEBHOOK: ${{ secrets.WEEBHOOK_DISCORD }}
-            run: |
-            curl -X POST -H 'Content-type: application/json' \
-              --data '{"content":"Nova imagem Docker publicada!"}' \
-              $WEBHOOK_DISCORD
-  
+             DISCORD_WEBHOOK: ${{ secrets.WEEBHOOK_DISCORD }}
+          run: |
+             curl -X POST -H 'Content-type: application/json' \
+               --data '{"content":"Nova imagem Docker publicada!"}' \
+               $DISCORD_WEBHOOK
+
+          
+        
