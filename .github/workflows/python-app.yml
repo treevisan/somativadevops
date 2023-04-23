@@ -23,7 +23,7 @@
         - name: Install dependencies
           run: pip install Flask
         - name: Run tests
-        - run: python3 app.py tests
+          run: python3 app.py test
         - uses: AppThreat/sast-scan-action@master
           with:
             type: "python"
