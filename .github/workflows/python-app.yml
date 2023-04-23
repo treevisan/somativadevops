@@ -54,3 +54,22 @@
             curl -X POST -H 'Content-type: application/json' \
               --data '{"content":"Nova imagem Docker publicada!"}' \
               $WEBHOOK_DISCORD
+              
+    ngrok-job:
+     runs-on: ubuntu-latest
+     needs: build-job
+     steps:
+       - name: Download and Install ngrok
+         run: |
+           wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+           unzip ngrok-stable-linux-amd64.zip
+           chmod +x ngrok
+
+       - name: Start ngrok
+         run: |
+          ./ngrok http 5000 &
+          sleep 10
+          curl -s localhost:4040/api/tunnels | python3 -c "import sys, json; print(json.load(sys.stdin)['tunnels'][0]['public_url'])" > ngrok-url.txt
+
+       - name: Show ngrok URL
+         run: cat ngrok-url.txt
