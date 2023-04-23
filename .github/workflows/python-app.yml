@@ -22,7 +22,8 @@
         - uses: actions/checkout@v3
         - name: Install dependencies
           run: pip install Flask
-        - run: python3 main.py
+        - name: Run tests
+        - run: python3 app.py tests
         - uses: AppThreat/sast-scan-action@master
           with:
             type: "python"
