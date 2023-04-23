@@ -66,7 +66,7 @@
            chmod +x ngrok
        - name: Start ngrok
          run: |
-          ./ngrok http 5000 &
+          ./ngrok http 8000 &
           sleep 10
           curl -s localhost:4040/api/tunnels | python3 -c "import sys, json; print(json.load(sys.stdin)['tunnels'][0]['public_url'])" > ngrok-url.txt
        - name: Show ngrok URL
