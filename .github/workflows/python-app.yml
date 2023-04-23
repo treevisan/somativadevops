@@ -45,3 +45,8 @@
 
         - name: Push Docker image
           run: docker push ggtte/reposo:latest
+          
+        - name: Envio notificação
+          if: github.event_name == 'pull_request' || github.event_name == 'push'
+          env:
+            DISCORD_WEBHOOK:
